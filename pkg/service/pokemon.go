@@ -7,7 +7,7 @@ import (
 	"github.com/mtslzr/pokeapi-go"
 )
 
-type Service interface {
+type IPokemonService interface {
 	GetPokemon(name string) model.Pokemon
 	GetPokemons(from, to int) []model.Pokemon
 	GetMoves(name string) []model.Move
