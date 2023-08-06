@@ -2,30 +2,36 @@ package model
 
 import "github.com/mtslzr/pokeapi-go/structs"
 
-type LocalPokemon struct {
+type Pokemon struct {
 	ID                     int    `json:"id"`
 	Name                   string `json:"name"`
 	BaseExperience         int    `json:"base_experience"`
 	Height                 int    `json:"height"`
+	Weight                 int    `json:"weight"`
+	Order                  int    `json:"order"`
 	LocationAreaEncounters string `json:"location_area_encounters"`
 }
 
-func newLocalPokemon(id int, name string, experience, height int, location string) *LocalPokemon {
-	return &LocalPokemon{
+func newPokemon(id int, name string, experience, height, weight, order int, location string) *Pokemon {
+	return &Pokemon{
 		ID:                     id,
 		Name:                   name,
 		BaseExperience:         experience,
 		Height:                 height,
+		Weight:                 weight,
+		Order:                  order,
 		LocationAreaEncounters: location,
 	}
 }
 
-func PokemonDaoToPokemon(pokemonDao structs.Pokemon) *LocalPokemon {
-	return newLocalPokemon(
-		pokemonDao.ID,
-		pokemonDao.Name,
-		pokemonDao.BaseExperience,
-		pokemonDao.Height,
-		pokemonDao.LocationAreaEncounters,
+func PokemonDtoToPokemon(pokemonDTO structs.Pokemon) *Pokemon {
+	return newPokemon(
+		pokemonDTO.ID,
+		pokemonDTO.Name,
+		pokemonDTO.BaseExperience,
+		pokemonDTO.Height,
+		pokemonDTO.Weight,
+		pokemonDTO.Order,
+		pokemonDTO.LocationAreaEncounters,
 	)
 }
